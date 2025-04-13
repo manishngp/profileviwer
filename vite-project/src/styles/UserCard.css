@@ -1,0 +1,109 @@
+.user-card {
+  background: white;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  padding: 1.5rem;
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.user-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.profile-image {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 0 auto 1rem;
+  border: 4px solid var(--accent-color);
+  padding: 3px;
+  background: white;
+}
+
+.user-info h3 {
+  color: var(--primary-color);
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+.email {
+  color: var(--text-color);
+  opacity: 0.8;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.description {
+  background: #f8f9fa;
+  padding: 1rem;
+  border-radius: var(--border-radius);
+  margin-bottom: 1rem;
+  font-style: italic;
+}
+
+.details {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.details p {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.details strong {
+  color: var(--secondary-color);
+  min-width: 100px;
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.social-links a {
+  color: var(--accent-color);
+  padding: 0.5rem;
+  border-radius: 50%;
+  transition: var(--transition);
+}
+
+.social-links a:hover {
+  background: var(--accent-color);
+  color: white;
+}
+
+.edit-button {
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--border-radius);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0 auto;
+}
+
+.edit-button:hover {
+  background: var(--secondary-color);
+}
+
+@media (max-width: 768px) {
+  .user-card {
+    padding: 1rem;
+  }
+
+  .profile-image {
+    width: 100px;
+    height: 100px;
+  }
+}
