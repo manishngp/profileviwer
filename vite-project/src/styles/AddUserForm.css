@@ -1,72 +1,64 @@
 .add-user-form {
-  display: grid;
-  gap: 1.5rem;
-  max-width: 600px;
-  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
-.form-group {
-  display: grid;
-  gap: 0.5rem;
-}
-
-.form-group label {
-  font-weight: 600;
-  color: var(--text-color);
-}
-
-.form-group input,
-.form-group textarea {
+.add-user-form input,
+.add-user-form textarea {
+  padding: 1rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 1px solid #a3b18a;
   width: 100%;
-  padding: 0.75rem;
-  border: 2px solid #e9ecef;
-  border-radius: var(--border-radius);
-  transition: var(--transition);
+  box-sizing: border-box;
+  background-color: #fff;
+  transition: border-color 0.3s ease;
 }
 
-.form-group textarea {
-  min-height: 120px;
+.add-user-form input:focus,
+.add-user-form textarea:focus {
+  border-color: #588157;
+  outline: none;
+}
+
+.add-user-form textarea {
   resize: vertical;
-}
-
-.form-group input:focus,
-.form-group textarea:focus {
-  border-color: var(--accent-color);
-  box-shadow: 0 0 0 3px rgba(72, 149, 239, 0.2);
+  min-height: 100px;
 }
 
 .form-buttons {
   display: flex;
+  justify-content: space-between;
   gap: 1rem;
-  justify-content: flex-end;
-  margin-top: 1rem;
 }
 
-.submit-button {
-  background: var(--success-color);
+.form-buttons button {
+  flex: 1;
+  padding: 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.form-buttons button[type='submit'] {
+  background-color: #588157;
   color: white;
 }
 
-.cancel-button {
-  background: var(--danger-color);
+.form-buttons button[type='submit']:hover {
+  background-color: #3a5a40;
+  transform: scale(1.05);
+}
+
+.form-buttons button[type='button'] {
+  background-color: #344e41;
   color: white;
 }
 
-.submit-button:hover,
-.cancel-button:hover {
-  opacity: 0.9;
-}
-
-@media (max-width: 768px) {
-  .add-user-form {
-    gap: 1rem;
-  }
-
-  .form-buttons {
-    flex-direction: column;
-  }
-
-  .form-buttons button {
-    width: 100%;
-  }
+.form-buttons button[type='button']:hover {
+  background-color: #3a5a40;
+  transform: scale(1.05);
 }

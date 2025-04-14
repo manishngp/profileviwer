@@ -1,91 +1,189 @@
+
 .modal-overlay {
-  background: rgba(0, 0, 0, 0.7);
-  backdrop-filter: blur(4px);
-}
-
-.modal-content {
-  background: white;
-  border-radius: var(--border-radius);
-  box-shadow: var(--shadow);
-  padding: 2rem;
-  width: 90%;
-  max-width: 600px;
-  animation: modalFade 0.3s ease;
-}
-
-.modal-content form {
-  display: grid;
-  gap: 1.5rem;
-}
-
-.form-group {
-  display: grid;
-  gap: 0.5rem;
-}
-
-.form-group label {
-  font-weight: 600;
-  color: var(--text-color);
-}
-
-.form-group input,
-.form-group textarea {
-  width: 100%;
-  padding: 0.75rem;
-  border: 2px solid #e9ecef;
-  border-radius: var(--border-radius);
-  transition: var(--transition);
-}
-
-.form-group textarea {
-  min-height: 120px;
-  resize: vertical;
-}
-
-.form-group input:focus,
-.form-group textarea:focus {
-  border-color: var(--accent-color);
-  box-shadow: 0 0 0 3px rgba(72, 149, 239, 0.2);
-}
-
-.modal-buttons {
-  display: flex;
-  gap: 1rem;
-  justify-content: flex-end;
-  margin-top: 1.5rem;
-}
-
-.save-button {
-  background: var(--success-color);
-  color: white;
-}
-
-.cancel-button {
-  background: var(--danger-color);
-  color: white;
-}
-
-@keyframes modalFade {
-  from {
-    opacity: 0;
-    transform: translateY(-20px);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(52, 78, 65, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    backdrop-filter: blur(4px);
+    animation: fadeIn 0.3s ease;
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+  
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
   }
-}
-
-@media (max-width: 768px) {
+  
   .modal-content {
-    padding: 1.5rem;
+    background-color: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 15px 40px rgba(52, 78, 65, 0.3);
+    width: 90%;
+    max-width: 500px;
+    padding: 30px;
+    position: relative;
+    animation: slideUp 0.4s ease;
+    border-top: 6px solid #588157;
   }
-
-  .modal-buttons {
+  
+  @keyframes slideUp {
+    from { transform: translateY(30px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+  
+  form {
+    display: flex;
     flex-direction: column;
+    gap: 16px;
   }
-
+  
+  input, textarea {
+    padding: 12px 16px;
+    border: 1px solid #a3b18a;
+    border-radius: 8px;
+    font-size: 15px;
+    transition: all 0.2s ease;
+    background-color: #f8f9f7;
+    color: #344e41;
+  }
+  
+  input:focus, textarea:focus {
+    outline: none;
+    border-color: #588157;
+    box-shadow: 0 0 0 3px rgba(88, 129, 87, 0.2);
+  }
+  
+  input[readonly] {
+    background-color: #e9ecef;
+    cursor: not-allowed;
+  }
+  
+  textarea {
+    min-height: 120px;
+    resize: vertical;
+  }
+  
+  label {
+    font-weight: 600;
+    color: #344e41;
+    margin-bottom: -8px;
+    display: block;
+    font-size: 14px;
+  }
+  
+  form input:nth-of-type(1)::before,
+  form textarea::before,
+  form input:nth-of-type(2)::before {
+    content: attr(name);
+    text-transform: capitalize;
+    display: block;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+  
+  .modal-buttons {
+    display: flex;
+    gap: 12px;
+    margin-top: 10px;
+    justify-content: flex-end;
+  }
+  
   .modal-buttons button {
-    width: 100%;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: none;
   }
-}
+  
+  .modal-buttons button[type="submit"] {
+    background-color: #3a5a40;
+    color: white;
+    flex: 1;
+  }
+  
+  .modal-buttons button[type="submit"]:hover {
+    background-color: #344e41;
+    box-shadow: 0 4px 8px rgba(52, 78, 65, 0.3);
+  }
+  
+  .modal-buttons button[type="button"] {
+    background-color: #dad7cd;
+    color: #344e41;
+  }
+  
+  .modal-buttons button[type="button"]:hover {
+    background-color: #c5cdc1;
+  }
+  
+
+  form::before {
+    content: "Edit Profile";
+    font-size: 24px;
+    font-weight: 700;
+    color: #344e41;
+    margin-bottom: 16px;
+    text-align: center;
+    display: block;
+    border-bottom: 2px solid #a3b18a;
+    padding-bottom: 16px;
+  }
+  
+  /* Mobile responsiveness */
+  @media (max-width: 600px) {
+    .modal-content {
+      width: 95%;
+      padding: 20px;
+    }
+    
+    .modal-buttons {
+      flex-direction: column;
+    }
+    
+    form::before {
+      font-size: 20px;
+    }
+  }
+  
+  /* Add field labels */
+  input[name="name"]::before {
+    content: "Name";
+  }
+  
+  input[name="email"]::before {
+    content: "Email";
+  }
+  
+  textarea[name="description"]::before {
+    content: "Description";
+  }
+  
+  input[name="languages"]::before {
+    content: "Languages";
+  }
+  
+  input[name="education"]::before {
+    content: "Education";
+  }
+  
+  input[name="specialization"]::before {
+    content: "Specialization";
+  }
+  
+  input[name="twitter"]::before {
+    content: "Twitter URL";
+  }
+  
+  input[name="instagram"]::before {
+    content: "Instagram URL";
+  }
+  
+  input[name="imageUrl"]::before {
+    content: "Profile Image URL";
+  }

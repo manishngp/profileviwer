@@ -15,10 +15,13 @@ function App() {
 
   useEffect(() => {
     dispatch(setUsers(storedUsers));
-  }, [dispatch, storedUsers]);
+  }, []);
 
+ 
   useEffect(() => {
-    setStoredUsers(users);
+    if (users.length > 0) {
+      setStoredUsers(users);
+    }
   }, [users, setStoredUsers]);
 
   const filteredUsers = users.filter(user => {
